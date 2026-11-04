@@ -25,6 +25,282 @@ export const demoCatalog = [
   { id: 'demo-3', service: 'Restaurante', name: 'Cozinha da Vila', category: categories[2], description: 'Restaurante com refeições caseiras, encomendas e almoço preparado todos os dias.', neighborhood: 'Vila Nova', area: 'Retirada no local e entrega', email: 'restaurante@example.com' }
 ];
 
+// Cadastros fictícios para apresentação; contatos usam domínio reservado.
+demoCatalog.push(...[
+  {
+    "id": "area-demo-1",
+    "service": "Técnico de informática",
+    "name": "Byte Oficina",
+    "category": "Tecnologia",
+    "description": "Formatação de computador, instalação de programas, remoção de vírus e manutenção de notebooks.",
+    "email": "cadastro01@example.com"
+  },
+  {
+    "id": "area-demo-2",
+    "service": "Técnico de informática",
+    "name": "Conecta Computadores",
+    "category": "Tecnologia",
+    "description": "Upgrade de SSD, recuperação de arquivos e configuração de computadores e redes Wi-Fi.",
+    "email": "cadastro02@example.com"
+  },
+  {
+    "id": "area-demo-3",
+    "service": "Web designer",
+    "name": "Estúdio Pixel",
+    "category": "Tecnologia",
+    "description": "Criação de sites, landing pages e lojas virtuais responsivas para pequenos negócios.",
+    "email": "cadastro03@example.com"
+  },
+  {
+    "id": "area-demo-4",
+    "service": "Web designer",
+    "name": "Marina Interfaces",
+    "category": "Tecnologia",
+    "description": "Design de sites, interfaces acessíveis e páginas para divulgação de produtos.",
+    "email": "cadastro04@example.com"
+  },
+  {
+    "id": "area-demo-5",
+    "service": "Design gráfico",
+    "name": "Traço Criativo",
+    "category": "Serviços profissionais",
+    "description": "Identidade visual, logotipos, cartões de visita e artes para redes sociais.",
+    "email": "cadastro05@example.com"
+  },
+  {
+    "id": "area-demo-6",
+    "service": "Social media",
+    "name": "Presença Digital",
+    "category": "Serviços profissionais",
+    "description": "Planejamento de conteúdo e gestão de Instagram para empresas e profissionais.",
+    "email": "cadastro06@example.com"
+  },
+  {
+    "id": "area-demo-7",
+    "service": "Confeitaria",
+    "name": "Doce Abraço",
+    "category": "Alimentação",
+    "description": "Bolos de aniversário, brigadeiros e doces personalizados para festas.",
+    "email": "cadastro07@example.com"
+  },
+  {
+    "id": "area-demo-8",
+    "service": "Confeitaria",
+    "name": "Ateliê Açúcar e Afeto",
+    "category": "Alimentação",
+    "description": "Bolos caseiros, cupcakes e sobremesas por encomenda.",
+    "email": "cadastro08@example.com"
+  },
+  {
+    "id": "area-demo-9",
+    "service": "Marmitas",
+    "name": "Sabor de Casa",
+    "category": "Alimentação",
+    "description": "Marmitas caseiras, refeições congeladas e opções vegetarianas.",
+    "email": "cadastro09@example.com"
+  },
+  {
+    "id": "area-demo-10",
+    "service": "Padaria",
+    "name": "Pão da Vila",
+    "category": "Alimentação",
+    "description": "Pães artesanais, focaccias e biscoitos de fabricação própria.",
+    "email": "cadastro10@example.com"
+  },
+  {
+    "id": "area-demo-11",
+    "service": "Cabeleireiro",
+    "name": "Studio Helena",
+    "category": "Beleza e bem-estar",
+    "description": "Cortes, escova, hidratação e coloração de cabelos.",
+    "email": "cadastro11@example.com"
+  },
+  {
+    "id": "area-demo-12",
+    "service": "Barbearia",
+    "name": "Barba & Estilo",
+    "category": "Beleza e bem-estar",
+    "description": "Corte masculino, acabamento e cuidados com a barba.",
+    "email": "cadastro12@example.com"
+  },
+  {
+    "id": "area-demo-13",
+    "service": "Maquiador",
+    "name": "Luiza Beleza",
+    "category": "Beleza e bem-estar",
+    "description": "Maquiagem social, produção para festas e aulas de automaquiagem.",
+    "email": "cadastro13@example.com"
+  },
+  {
+    "id": "area-demo-14",
+    "service": "Costura",
+    "name": "Linha e Afeto",
+    "category": "Moda e costura",
+    "description": "Ajustes de roupas, barras de calças e confecção de peças sob medida.",
+    "email": "cadastro14@example.com"
+  },
+  {
+    "id": "area-demo-15",
+    "service": "Loja de roupas",
+    "name": "Veste Leve",
+    "category": "Moda e costura",
+    "description": "Roupas casuais, camisetas e acessórios para o dia a dia.",
+    "email": "cadastro15@example.com"
+  },
+  {
+    "id": "area-demo-16",
+    "service": "Artesão",
+    "name": "Feito com Carinho",
+    "category": "Serviços profissionais",
+    "description": "Peças artesanais em crochê, presentes e decoração para casa.",
+    "email": "cadastro16@example.com"
+  },
+  {
+    "id": "area-demo-17",
+    "service": "Diarista",
+    "name": "Casa em Ordem",
+    "category": "Casa e manutenção",
+    "description": "Limpeza residencial e organização de cozinhas e ambientes.",
+    "email": "cadastro17@example.com"
+  },
+  {
+    "id": "area-demo-18",
+    "service": "Encanador",
+    "name": "Água Certa",
+    "category": "Casa e manutenção",
+    "description": "Reparo de vazamentos, instalação de torneiras e manutenção hidráulica.",
+    "email": "cadastro18@example.com"
+  },
+  {
+    "id": "area-demo-19",
+    "service": "Pintor",
+    "name": "Novas Cores",
+    "category": "Casa e manutenção",
+    "description": "Pintura de paredes, portas e fachadas residenciais.",
+    "email": "cadastro19@example.com"
+  },
+  {
+    "id": "area-demo-20",
+    "service": "Marceneiro",
+    "name": "Madeira Viva",
+    "category": "Casa e manutenção",
+    "description": "Móveis sob medida, armários e manutenção de móveis de madeira.",
+    "email": "cadastro20@example.com"
+  },
+  {
+    "id": "area-demo-21",
+    "service": "Jardineiro",
+    "name": "Verde Perto",
+    "category": "Casa e manutenção",
+    "description": "Poda, manutenção de jardins e cuidados com plantas e gramados.",
+    "email": "cadastro21@example.com"
+  },
+  {
+    "id": "area-demo-22",
+    "service": "Técnico de ar-condicionado",
+    "name": "Clima Bom",
+    "category": "Casa e manutenção",
+    "description": "Instalação, limpeza e manutenção de ar-condicionado.",
+    "email": "cadastro22@example.com"
+  },
+  {
+    "id": "area-demo-23",
+    "service": "Fretes",
+    "name": "Leva Fácil",
+    "category": "Transporte e logística",
+    "description": "Pequenos fretes, mudanças e transporte de móveis.",
+    "email": "cadastro23@example.com"
+  },
+  {
+    "id": "area-demo-24",
+    "service": "Entregas",
+    "name": "Rota Ágil",
+    "category": "Transporte e logística",
+    "description": "Entrega de documentos, pacotes e encomendas comerciais.",
+    "email": "cadastro24@example.com"
+  },
+  {
+    "id": "area-demo-25",
+    "service": "Aulas particulares",
+    "name": "Aprender Juntos",
+    "category": "Educação",
+    "description": "Reforço escolar em matemática e português para ensino fundamental.",
+    "email": "cadastro25@example.com"
+  },
+  {
+    "id": "area-demo-26",
+    "service": "Professor de inglês",
+    "name": "Clara Idiomas",
+    "category": "Educação",
+    "description": "Aulas de inglês, conversação e preparação para entrevistas.",
+    "email": "cadastro26@example.com"
+  },
+  {
+    "id": "area-demo-27",
+    "service": "Fotografia",
+    "name": "Luz de Memória",
+    "category": "Eventos",
+    "description": "Fotografia de eventos, retratos e ensaios de família.",
+    "email": "cadastro27@example.com"
+  },
+  {
+    "id": "area-demo-28",
+    "service": "Organizador de eventos",
+    "name": "Encontro Especial",
+    "category": "Eventos",
+    "description": "Planejamento de festas, decoração e organização de eventos.",
+    "email": "cadastro28@example.com"
+  },
+  {
+    "id": "area-demo-29",
+    "service": "Cuidados com animais",
+    "name": "Patas Felizes",
+    "category": "Animais de estimação",
+    "description": "Passeios com cães e cuidados com animais de estimação.",
+    "email": "cadastro29@example.com"
+  },
+  {
+    "id": "area-demo-30",
+    "service": "Pet shop",
+    "name": "Amigo de Patas",
+    "category": "Animais de estimação",
+    "description": "Rações, brinquedos, acessórios para animais, banho e tosa.",
+    "email": "cadastro30@example.com"
+  },
+  {
+    "id": "area-demo-31",
+    "service": "Fisioterapia",
+    "name": "Movimento Pleno",
+    "category": "Saúde",
+    "description": "Fisioterapia, exercícios terapêuticos e reabilitação de movimentos.",
+    "email": "cadastro31@example.com"
+  },
+  {
+    "id": "area-demo-32",
+    "service": "Nutrição",
+    "name": "Nutrir Bem",
+    "category": "Saúde",
+    "description": "Orientação nutricional, planejamento alimentar e educação alimentar.",
+    "email": "cadastro32@example.com"
+  },
+  {
+    "id": "area-demo-33",
+    "service": "Contabilidade",
+    "name": "Conta Clara",
+    "category": "Serviços profissionais",
+    "description": "Contabilidade para pequenos negócios e orientação para MEI.",
+    "email": "cadastro33@example.com"
+  },
+  {
+    "id": "area-demo-34",
+    "service": "Loja de presentes",
+    "name": "Mimo Coletivo",
+    "category": "Serviços profissionais",
+    "description": "Presentes criativos, papelaria e itens de decoração.",
+    "email": "cadastro34@example.com"
+  }
+]);
+
 const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
 export function searchCatalog({ query = '', category = '', neighborhood = '' } = {}) {
   if (![query, category, neighborhood].some(value => value.trim())) return [];

@@ -1,11 +1,14 @@
-import {instagramUrl} from './services.js';
+import {instagramUrl, serviceOptions} from './services.js';
 export const publicFields = ['name', 'serviceIds', 'category', 'description', 'whatsapp', 'email', 'website'];
 
 export function validateRegistration(data) {
   const errors = {};
-  for (const key of ['name', 'category', 'description', 'responsibleWhatsapp']) {
-    if (!String(data[key] || '').trim()) errors[key] = 'Preencha este campo.';
+  for (const key of ['name', 'description', 'responsibleWhatsapp']) {
+    if (!String(data[key] || '').trim()) errors[key] = key === 'name' ? 'Informe seu nome ou o nome da empresa.' : key === 'description' ? 'Conte quais serviços ou produtos você oferece.' : 'Informe o WhatsApp do responsável com DDD.';
   }
+  if (data.name?.trim() && (data.name.trim().length < 2 || data.name.trim().length > 160)) errors.name = 'Informe um nome com 2 a 160 caracteres.';
+  if (data.description?.length > 600) errors.description = 'Use até 600 caracteres para descrever seus serviços ou produtos.';
+  if (data.serviceIds?.length !== 1 || !serviceOptions.some(o => o.id === data.serviceIds?.[0])) errors.serviceIds = 'Selecione um ramo de atuação.';
   if (!data.whatsapp?.trim() && !data.email?.trim()) {
     errors.whatsapp = 'Informe pelo menos um contato público: WhatsApp comercial ou e-mail.';
   }
