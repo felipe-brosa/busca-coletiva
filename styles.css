@@ -190,3 +190,36 @@ body.registration-page .registration-stage,body.registration-page main>footer{wi
 }
 @keyframes company-greeting{0%,15%,80%,100%{transform:rotate(0deg)}35%,60%{transform:rotate(-6deg)}48%{transform:rotate(3deg)}}
 @media(max-width:720px){.registration-illustration .company-scene{max-width:280px}}
+
+/* Shared header stays outside the scrolling page content. */
+body>header,body.registration-page>header,body.search-page>header{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;position:relative;padding-top:20px;padding-bottom:20px}
+body>header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100vw;height:1px;background:#e5e9ec;pointer-events:none}
+body>header .brand{display:block;min-width:0}
+body>header .brand img{width:240px;max-width:100%;height:auto}
+body>header nav{flex:none;flex-wrap:nowrap;font-size:.875rem}
+body.search-page main>.page-stage,body.search-page main:not(:has(.category-result)):not(:has(.empty))>.page-stage{min-height:calc(100dvh - var(--search-header-height,81px) - var(--search-footer-height,64px))}
+@media(max-width:720px){
+ body>header,body.registration-page>header{padding-top:16px;padding-bottom:16px;gap:12px}
+ body>header .brand img{width:210px}
+ body>header nav{font-size:.8125rem}
+ body.registration-page main,body.registration-page:has(.wizard-profile) main{padding-top:20px;padding-bottom:24px}
+ .registration-stage>.wizard-profile{max-width:540px}
+ .wizard-profile .intro{margin-bottom:20px}
+ .wizard-profile .intro h1{font-size:1.5rem}
+ .wizard-profile .intro p{font-size:.875rem}
+ .wizard-profile .profile-choices{grid-template-columns:1fr;gap:12px}
+ .wizard-profile .profile-choice,.wizard-profile .profile-choice:has(input:checked){flex-direction:row;text-align:left;gap:12px;padding:12px 36px 12px 10px;min-height:122px}
+ .wizard-profile .profile-choice{border-width:2px;border-color:var(--line)}
+ .wizard-profile .profile-choice:has(input:checked){border-color:var(--action)}
+ .wizard-profile .profile-choice>svg{width:100px;max-width:32%;flex:0 0 100px}
+ .wizard-profile .profile-choice>span{flex:1;min-width:0}
+ .wizard-profile .profile-choice strong{font-size:.9375rem;line-height:1.35}
+ .wizard-profile .profile-choice small{font-size:.75rem;line-height:1.45;margin-top:5px}
+ .wizard-profile .profile-choice input{right:12px;top:12px;width:18px;height:18px;min-height:18px}
+ .wizard-profile .actions{margin-top:20px}
+ .wizard-columns>.registration-illustration{padding:0;margin:0 auto 20px;width:100%}
+ .wizard-columns>.registration-illustration svg,.wizard-columns>.registration-illustration img{max-width:200px}
+ .wizard-columns>.intro{margin-bottom:24px}
+ .registration-stage:has(.wizard-columns){justify-content:flex-start}
+}
+@media(max-width:360px){body>header .brand img{width:180px}.wizard-profile .profile-choice>svg{width:84px;flex-basis:84px}}

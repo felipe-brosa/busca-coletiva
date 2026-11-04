@@ -1,3 +1,4 @@
+import {showAdmin} from './admin.js';
 import {companyIllustration, companyScene} from './company-illustration.js';
 import {individualScene} from './individual-scenes.js';
 import {individualIllustration} from './individual-illustration.js';
@@ -17,7 +18,9 @@ function measureSearchAnchor() {
   const core=form.offsetTop + form.offsetHeight - logo.offsetTop;
   const footerHeight=footer.offsetHeight;
   // Derive spacing only from viewport and the logo/search group, never results.
-  main.style.setProperty('--search-top-space',Math.max(24,(window.innerHeight-footerHeight-core)/2)+'px');
+  const headerHeight=document.querySelector('header').offsetHeight;
+  main.style.setProperty('--search-top-space',Math.max(24,(window.innerHeight-headerHeight-footerHeight-core)/2)+'px');
+  main.style.setProperty('--search-header-height',headerHeight+'px');
   main.style.setProperty('--search-footer-height',footerHeight+'px');
 }
 const searchAnchorObserver=new ResizeObserver(measureSearchAnchor);
@@ -151,9 +154,17 @@ function alignRegistrationContent() {
     for (const child of [...main.children]) if (child.tagName !== 'FOOTER') stage.appendChild(child);
     main.prepend(stage);
   }
-  const top = document.querySelector('#registration-progress').getBoundingClientRect().bottom;
+  const illustration=main.querySelector('.registration-illustration');
+  if(illustration){
+    const wizard=main.querySelector('.wizard-columns');
+    if(matchMedia('(max-width:720px)').matches)wizard.prepend(illustration);
+    else wizard.querySelector('.layout').append(illustration);
+  }
+  const progress=document.querySelector('#registration-progress');
+  const top = progress.hidden ? document.querySelector('header').getBoundingClientRect().bottom : progress.getBoundingClientRect().bottom;
   main.style.setProperty('--registration-top', top + 'px');
 }
+matchMedia('(max-width:720px)').addEventListener('change',alignRegistrationContent);
 const registrationResize = new ResizeObserver(() => alignRegistrationContent());
 registrationResize.observe(document.querySelector('header'));
 registrationResize.observe(document.querySelector('#registration-progress'));
@@ -337,8 +348,9 @@ function route() {
   document.querySelector('#registration-progress').hidden = !['cadastrar','revisar','concluido'].includes(page);
   document.body.classList.toggle('professionals-list-page', page === 'profissionais');
   document.body.classList.toggle('registration-page', ['cadastrar','revisar','concluido'].includes(page));
-  document.body.classList.toggle('search-page', page === 'buscar' || !['cadastrar','revisar','concluido','como-funciona','privacidade','profissionais','perfil'].includes(page));
-  const routes = { perfil:showProfessionalProfile, profissionais:showProfessionals, privacidade:showPrivacy, buscar:showSearch, cadastrar:showForm, revisar:showReview, concluido:showComplete, 'como-funciona':showInfo };
+  document.body.classList.toggle('search-page', page === 'buscar' || !['cadastrar','revisar','concluido','como-funciona','privacidade','profissionais','perfil','admin'].includes(page));
+  document.body.classList.toggle('admin-page',page==='admin');
+  const routes = { admin:showAdmin, perfil:showProfessionalProfile, profissionais:showProfessionals, privacidade:showPrivacy, buscar:showSearch, cadastrar:showForm, revisar:showReview, concluido:showComplete, 'como-funciona':showInfo };
   (routes[page] || showSearch)();
   if (footer) main.appendChild(footer);
   if (!document.body.classList.contains('registration-page')) {
@@ -354,8 +366,8 @@ function route() {
     if(footer)searchAnchorObserver.observe(footer);
     measureSearchAnchor();
   }
-  document.querySelectorAll('nav a').forEach(a => { if (a.hash === `#${page}` || (a.hash === '#cadastrar' && ['revisar','concluido'].includes(page))) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-  document.title = `${({perfil:'Perfil profissional',profissionais:'Profissionais e empresas',buscar:'Encontre serviços ou produtos',cadastrar:'Cadastre seus serviços ou produtos',revisar:'Revise o cadastro',concluido:'Cadastro enviado',privacidade:'Política de Privacidade','como-funciona':'Como funciona'})[page] || 'Encontre serviços ou produtos'} · Busca Coletiva`;
+  document.querySelectorAll('header nav a, footer nav a').forEach(a => { if (a.hash === `#${page}` || (a.hash === '#cadastrar' && ['revisar','concluido'].includes(page))) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  document.title = `${({admin:'Administração',perfil:'Perfil profissional',profissionais:'Profissionais e empresas',buscar:'Encontre serviços ou produtos',cadastrar:'Cadastre seus serviços ou produtos',revisar:'Revise o cadastro',concluido:'Cadastro enviado',privacidade:'Política de Privacidade','como-funciona':'Como funciona'})[page] || 'Encontre serviços ou produtos'} · Busca Coletiva`;
   main.scrollTop = 0; window.scrollTo(0,0); main.focus({preventScroll:true});
 }
 window.addEventListener('hashchange', route);
